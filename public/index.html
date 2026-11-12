@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reconnect Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div>
+        <div class="eyebrow">WEBSOCKET REFERENCE</div>
+        <h1>Reconnect dashboard</h1>
+        <p class="sub">Live ticks, heartbeat/latency, exponential-backoff reconnect and a force-drop control.</p>
+      </div>
+      <div id="status" class="status connecting">Connecting…</div>
+    </header>
+
+    <section class="stats">
+      <div class="stat"><span>Attempt</span><b id="attempt">0</b></div>
+      <div class="stat"><span>Latency</span><b id="latency">—</b></div>
+      <div class="stat"><span>Last tick</span><b id="last">—</b></div>
+      <div class="stat"><span>Next retry</span><b id="countdown">—</b></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Live feed</h2>
+        <div class="controls">
+          <button id="drop" type="button">Force drop</button>
+          <button id="pause" type="button">Pause</button>
+        </div>
+      </div>
+      <canvas id="chart" width="900" height="150"></canvas>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Seq</th><th>Value</th><th>Server time</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      Reference implementation — adapt the tick source to your own metrics.
+      <a href="https://github.com/matrixneoaiagent/termix-websocket-dashboard">Source</a>
+    </footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
